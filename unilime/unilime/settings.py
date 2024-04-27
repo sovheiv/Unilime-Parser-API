@@ -24,6 +24,20 @@ with env.prefixed("DJANGO_"):
     DEBUG = env.bool("DEBUG", default=False)
     ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': env.int("PAGINATION_PAGE_SIZE")
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': env.str("REDIS_URL"),
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -124,3 +138,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+

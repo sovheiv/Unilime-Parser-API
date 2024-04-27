@@ -1,3 +1,4 @@
 djangorestframework
+django-redis
 psycopg2-binary
 environs
