@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Product(models.Model):
     title = models.CharField(max_length=512)
     asin = models.TextField(unique=True)
@@ -9,7 +10,9 @@ class Product(models.Model):
 
 
 class Review(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="reviews"
+    )
     title = models.CharField(max_length=255)
     review = models.TextField()
 
