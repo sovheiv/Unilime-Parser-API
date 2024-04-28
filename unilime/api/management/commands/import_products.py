@@ -20,9 +20,9 @@ class Command(BaseCommand):
                         defaults={"title": row["Title"]},
                     )
                     if created:
-                        print(f"Added :{product.title}")
+                        print(f"Added: {product.title}")
                     else:
-                        print(f"Updated existing :{product.title}")
+                        print(f"Updated existing: {product.title}")
 
         except FileNotFoundError:
             print(f"File does not exist: {file_path}")
